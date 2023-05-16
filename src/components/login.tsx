@@ -43,8 +43,6 @@ export function Login({ setRegisteredUser }: Props) {
             onClick={() => setInvalid({...invalid, validate: false})}
           />
           {errors.password && <span className="text-red-500 text-xs">{errors.password.message}</span>}
-        </div>
-        <div>
           {invalid.validate && <span className="text-red-500 text-xs">{invalid.message}</span>}
         </div>
         <div>
