@@ -1,6 +1,6 @@
 'use client'
-import { Login } from "@/components/login";
-import { Register } from "@/components/register";
+import { Login } from "@/components/Form/FormLogin";
+import { Register } from "@/components/Form/FormRegister";
 import { useState } from "react";
 
 export default function Home() {
