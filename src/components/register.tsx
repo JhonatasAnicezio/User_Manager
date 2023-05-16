@@ -19,8 +19,8 @@ export function Register({ setRegisteredUser }: Props) {
 
   const { handleSubmit, formState: { errors } } = registerForm;
 
-  const registerUser = async (data: registerData) => {
-    await register({ ...data, role: 'user' });
+  const registerUser = async ({ name, email, password }: registerData) => {
+    await register({ name, email, password, role: 'user' });
   };
 
   return (
@@ -56,8 +56,6 @@ export function Register({ setRegisteredUser }: Props) {
             onClick={() => setInvalid({...invalid, validate: false})}
           />
           {errors.password && <span className="text-red-500 text-xs">{errors.password.message}</span>}
-        </div>
-        <div>
           {invalid.validate && <span className="text-red-500 text-xs">{invalid.message}</span>}
         </div>
         <div>
