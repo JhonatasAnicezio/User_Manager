@@ -3,6 +3,7 @@ import { loginData } from '@/components/schemas/loginSchema';
 import { postLogin, postRegister, registerData } from '@/services/UserServices/userApi';
 import { ReactNode, createContext, useState } from 'react';
 import { setCookie } from 'nookies';
+import { useRouter } from 'next/navigation';
 
 type invalid = {
   validate: boolean,
@@ -30,6 +31,8 @@ type User = {
 }
 
 export function AuthProvider({ children }: Prop) {
+  const router = useRouter();
+
   const [user, setUser] = useState<User | null>(null);
 
   const [invalid, setInvalid] = useState({
@@ -47,6 +50,8 @@ export function AuthProvider({ children }: Prop) {
       });
 
       setUser(responseLogin.userData);
+
+      router.push('/user');
       
     } else {
       setInvalid({
@@ -66,6 +71,8 @@ export function AuthProvider({ children }: Prop) {
       });
 
       setUser(responseRegister.userData);
+
+      router.push('/user');
       
     } else {
       setInvalid({
