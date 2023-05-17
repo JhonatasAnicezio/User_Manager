@@ -1,8 +1,8 @@
 'use client'
 import { loginData } from '@/components/schemas/loginSchema';
-import { postLogin, postRegister, registerData } from '@/services/UserServices/userApi';
-import { ReactNode, createContext, useState } from 'react';
-import { setCookie } from 'nookies';
+import { getUser, postLogin, postRegister, registerData } from '@/services/UserServices/userApi';
+import { ReactNode, createContext, useEffect, useState } from 'react';
+import { setCookie, parseCookies } from 'nookies';
 import { useRouter } from 'next/navigation';
 
 type invalid = {
@@ -14,8 +14,10 @@ interface AuthContext {
   singIn: (data: loginData) => void,
   register: (data: registerData) => void,
   user: User | null,
+  setUser: (data: User | null) => void,
   invalid: invalid,
   setInvalid: (value: invalid) => void,
+  redirect: (role: string) => void,
 }
 
 export const AuthContext = createContext({} as AuthContext);
@@ -24,7 +26,7 @@ type Prop = {
   children: ReactNode,
 }
 
-type User = {
+export type User = {
   id: number,
   name: string,
   role: string,
@@ -40,6 +42,29 @@ export function AuthProvider({ children }: Prop) {
     message: '',
   });
 
+  const {'nextAuth.token': token} = parseCookies();
+
+  useEffect(() => {
+    if(token) {
+      getUser(token).then(({id, name, role}: User) => {
+        setUser({id, name, role});
+      });
+    }
+  }, []);
+
+  const redirect = (role: string) => {
+    switch (role) {
+    case 'admin':
+      router.push('/admin');
+      break
+    case 'user':
+      router.push('/user');
+      break
+    default:
+      router.push('/');
+    }
+  };
+
   async function singIn({ email, password }: loginData) {
     const responseLogin = await postLogin({email, password});
 
@@ -51,7 +76,7 @@ export function AuthProvider({ children }: Prop) {
 
       setUser(responseLogin.userData);
 
-      router.push('/user');
+      redirect(responseLogin.userData.role);
       
     } else {
       setInvalid({
@@ -72,7 +97,7 @@ export function AuthProvider({ children }: Prop) {
 
       setUser(responseRegister.userData);
 
-      router.push('/user');
+      redirect(responseRegister.userData.role);
       
     } else {
       setInvalid({
@@ -86,8 +111,10 @@ export function AuthProvider({ children }: Prop) {
     singIn,
     register,
     user,
+    setUser,
     invalid,
     setInvalid,
+    redirect,
   };
 
   return (
