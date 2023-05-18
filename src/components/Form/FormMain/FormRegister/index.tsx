@@ -1,8 +1,8 @@
 'use client'
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from '@hookform/resolvers/zod';
-import { registerData, registerSchema } from "../../schemas/registerSchema";
-import { Form } from '..';
+import { registerData, registerSchema } from "../../../schemas/registerSchema";
+import { Form } from '../..';
 import { useContext } from "react";
 import { AuthContext } from "@/context/AuthContext";
 
