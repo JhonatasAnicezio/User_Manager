@@ -3,6 +3,7 @@ import { Title } from "./title";
 import { Button } from "./button";
 import { Transiton } from "./transition";
 import { Label } from "./label";
+import { Select } from "./select";
 
 export const Form = {
   Title,
@@ -10,4 +11,5 @@ export const Form = {
   Button,
   Transiton,
   Label,
+  Select,
 };
