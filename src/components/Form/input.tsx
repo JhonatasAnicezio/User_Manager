@@ -9,13 +9,11 @@ export function Input(props: InputProps) {
   const { register } = useFormContext();
 
   return (
-    <div>
-      <input 
-        id={props.name}
-        className="bg-gray-200 w-60 h-8 px-3"
-        {...register(props.name)} 
-        {...props}
-      />
-    </div>
+    <input 
+      id={props.name}
+      className="bg-gray-200 w-60 h-8 px-3"
+      {...register(props.name)} 
+      {...props}
+    />
   )
 }
