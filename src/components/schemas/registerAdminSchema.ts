@@ -14,7 +14,7 @@ export const registerAdminSchema = z.object({
   }).min(6, {
     message: 'A senha precisa ter no mínimo 6 caracteres',
   }),
-  type: z.enum(['user', 'admin', 'moderator']).refine(value => value !== undefined, {
+  role: z.enum(['user', 'admin', 'moderator']).refine(value => value !== undefined, {
     message: 'O tipo é obrigatório',
   }),
 });
