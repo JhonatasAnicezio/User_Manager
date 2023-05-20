@@ -6,8 +6,7 @@ interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
 
 export function Label(props: LabelProps) {
   return (
-    <label 
-      htmlFor={props.name.toLowerCase()}
+    <label
       {...props}
     >
       {props.name}
