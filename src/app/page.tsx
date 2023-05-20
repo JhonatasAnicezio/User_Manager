@@ -1,4 +1,4 @@
-import { Form } from "@/components/Form/FormMain";
+import { Form } from "@/components/Form/FormHome";
 
 export default function Home() {
   return (
