@@ -1,17 +1,11 @@
 import { loginData } from '@/components/schemas/loginSchema';
 import { api } from './api';
 import { AxiosResponse } from 'axios';
-import { User } from '@/context/AuthContext';
-
-export type registerData = {
-  name: string,
-  email: string,
-  password: string,
-  role?: string,
-}
+import { registerData } from '@/components/schemas/registerSchema';
+import { ResponsePost, User } from '@/interfaces/IAuthContext';
 
 export async function postLogin({ email, password }: loginData) {
-  const { data } = await api.post<AxiosResponse>('/login', { email, password })
+  const { data }: AxiosResponse<ResponsePost | string> = await api.post<AxiosResponse>('/login', { email, password })
     .catch((error) => {
       if(error.response) {
         return error.response;
@@ -22,7 +16,7 @@ export async function postLogin({ email, password }: loginData) {
 }
 
 export async function postRegister({ name, email, password, role }: registerData) {
-  const { data } = await api.post<AxiosResponse>('/', { name, email, password, role })
+  const { data }: AxiosResponse<ResponsePost | string> = await api.post<AxiosResponse>('/', { name, email, password, role })
     .catch((error) => {
       if(error.response) {
         return error.response;
