@@ -1,14 +1,11 @@
 'use client'
 import { loginData } from '@/components/schemas/loginSchema';
-import { getUser, postLogin, postRegister, registerData } from '@/services/UserServices/userApi';
+import { registerData } from '@/components/schemas/registerSchema';
+import { getUser, postLogin, postRegister } from '@/services/UserServices/userApi';
 import { ReactNode, createContext, useEffect, useState } from 'react';
 import { setCookie, parseCookies } from 'nookies';
 import { useRouter } from 'next/navigation';
-
-type invalid = {
-  validate: boolean,
-  message: string,
-}
+import { User, invalid } from '@/interfaces/IAuthContext';
 
 interface AuthContext {
   singIn: (data: loginData) => void,
@@ -24,12 +21,6 @@ export const AuthContext = createContext({} as AuthContext);
 
 type Prop = {
   children: ReactNode,
-}
-
-export type User = {
-  id: number,
-  name: string,
-  role: string,
 }
 
 export function AuthProvider({ children }: Prop) {
@@ -68,7 +59,7 @@ export function AuthProvider({ children }: Prop) {
   async function singIn({ email, password }: loginData) {
     const responseLogin = await postLogin({email, password});
 
-    if(responseLogin.token) {
+    if(typeof responseLogin === 'object') {
 
       setCookie(undefined, 'nextAuth.token', responseLogin.token, {
         maxAge: 60 * 60 * 48, // 2 dias
@@ -89,7 +80,7 @@ export function AuthProvider({ children }: Prop) {
   async function register({ name, email, password, role }: registerData) {
     const responseRegister = await postRegister({ name, email, password, role});
 
-    if(responseRegister.token) {
+    if(typeof responseRegister === 'object') {
 
       setCookie(undefined, 'nextAuth.token', responseRegister.token, {
         maxAge: 60 * 60 * 48, // 2 dias
