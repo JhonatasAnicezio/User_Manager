@@ -14,9 +14,10 @@ export function Select(props: SelectProps) {
     <select
       {...props}
       {...register(props.name)}
+      defaultValue=""
       id={props.name}
     >
-      <option defaultValue="" selected disabled hidden>
+      <option value="" disabled hidden>
         {props.placeholder}
       </option>
       {props.options.map((option, index) => (
