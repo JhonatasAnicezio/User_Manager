@@ -3,17 +3,28 @@ import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from '@hookform/resolvers/zod';
 import { registerAdminData, registerAdminSchema } from "../../schemas/registerAdminSchema";
 import { Form } from '../';
-import { postRegister } from "@/services/UserServices/userApi";
+import { getAllUsers, postRegister } from "@/services/UserServices/userApi";
+import { useQuery } from "react-query";
+import { parseCookies } from "nookies";
 
 export function RegisterAdmin() {
   const loginForm = useForm<registerAdminData>({
     resolver: zodResolver(registerAdminSchema),
   });
 
+  const {'nextAuth.token': token} = parseCookies();
+
+  const { refetch } = useQuery(['users'], async () => {
+    const { users } = await getAllUsers(token);
+
+    return users;
+  });
+
   const { handleSubmit, reset } = loginForm;
 
   const register = async (data: registerAdminData) => {
     await postRegister(data);
+    refetch();
     reset();
   }
 
