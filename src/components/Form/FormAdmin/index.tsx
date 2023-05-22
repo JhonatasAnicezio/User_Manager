@@ -21,7 +21,7 @@ export function RegisterAdmin() {
     <FormProvider {...loginForm}>
       <form
         onSubmit={ handleSubmit(register) }
-        className="bg-blue-500 my-auto flex items-center mt-10 p-8 gap-5 shadow-lg"
+        className="bg-blue-500 my-auto flex items-center p-8 gap-5 shadow-lg"
       >
         <div className="flex flex-col">
           <Form.Label
