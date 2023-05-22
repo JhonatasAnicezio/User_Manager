@@ -20,6 +20,7 @@ export const registerSchema = z.object({
   }).min(6, {
     message: 'A senha precisa ter no mínimo 6 caracteres',
   }),
+  role: z.unknown(),
 });
 
 export type registerData = z.infer<typeof registerSchema>;
