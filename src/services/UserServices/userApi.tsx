@@ -55,3 +55,11 @@ export async function getAllUsers(token: string): Promise<ResponseGetUsers> {
 
   return data;
 }
+
+export async function deleteUser(id: number, token: string) {
+  await api.delete(`/${id}`, {
+    headers: {
+      'Authorization': `${token}`,
+    }
+  });
+}
