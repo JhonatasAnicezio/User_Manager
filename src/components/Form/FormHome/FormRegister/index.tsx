@@ -20,7 +20,6 @@ export function Register({ setRegisteredUser }: Props) {
   const { handleSubmit, formState: { errors } } = registerForm;
 
   const registerUser = async ({ name, email, password }: registerData) => {
-    console.log(name, email, password);
     await register({ name, email, password, role: 'user' });
   };
 
