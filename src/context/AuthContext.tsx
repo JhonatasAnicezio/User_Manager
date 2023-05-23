@@ -37,8 +37,8 @@ export function AuthProvider({ children }: Prop) {
 
   useEffect(() => {
     if(token) {
-      getUser(token).then(({id, name, role}: User) => {
-        setUser({id, name, role});
+      getUser(token).then(({id, name, role, email}: User) => {
+        setUser({id, name, role, email});
       });
     }
   }, []);
