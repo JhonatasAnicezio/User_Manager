@@ -6,6 +6,10 @@ O User Manager é um projeto full-stack desenvolvido em Next.js v13 com o objeti
 
 O Projeto é bem simples, mas escalavel, e com um sistema de login e medidas de proteção para garantir que apenas um tipo de usuario tenha acesso a uma tela especifica.
 
+<p align="center">
+  <img src="Peek 2023-05-23 17-58.gif" alt="animação do app">
+</p>
+
 ## Tecnologias utilizadas:
   - React/Next13
   - React-Query
