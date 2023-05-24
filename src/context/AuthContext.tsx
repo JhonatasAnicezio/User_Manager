@@ -48,7 +48,7 @@ export function AuthProvider({ children }: Prop) {
     case 'admin':
       router.push('/admin');
       break
-    case 'user':
+    case 'user' || 'moderator':
       router.push('/user');
       break
     default:
