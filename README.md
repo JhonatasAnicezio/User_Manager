@@ -36,8 +36,8 @@ npm start
 ```
 
 ## Login como Administrador
-Email: ze@admin.com
-Password: secret_admin
+#### Email: ze@admin.com
+#### Password: secret_admin
 
 # Autor
 
