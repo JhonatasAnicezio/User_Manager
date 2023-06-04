@@ -11,7 +11,7 @@ O projeto é simples, porém escalável, e conta com um sistema de login e medid
 </p>
 
 ## Tecnologias utilizadas:
-  - React/Next13
+  - React/Next
   - React-Query
   - Tailwind
   - TypeScript
