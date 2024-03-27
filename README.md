@@ -1,6 +1,6 @@
 # Projeto User Manager
 
-### Olá seja bem vindo ao Back User Manager!
+### Olá seja bem vindo ao Projeto User Manager!
 
 O User Manager é um projeto full-stack desenvolvido em Next.js v13 com o objetivo de aprender a utilizar o framework e explorar a nova estrutura de pasta "app". Nele, o usuário pode se cadastrar (o cadastro será sempre por padrão com o cargo de "usuário") e fazer login. Porém, o foco do projeto está no cargo de administrador, que terá o poder de criar usuários com qualquer cargo e remover os usuários!
 
