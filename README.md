@@ -17,7 +17,7 @@ O projeto é simples, porém escalável, e conta com um sistema de login e medid
   - TypeScript
  
  ## Como rodar o projeto:
- ### !! Atenção !! Por se tratar de um projeto full-stack é obrigatorio a ultilização do projeto [BackUserManager](git@github.com:JhonatasAnicezio/Back_UserManager.git). Todas as instruções de como se ultilizar a api estarão no README do projeto.
+ ### !! Atenção !! Por se tratar de um projeto full-stack é obrigatorio a ultilização do projeto [BackUserManager](https://github.com/JhonatasAnicezio/Back_UserManager). Todas as instruções de como se ultilizar a api estarão no README do projeto.
  
 Pré-requisitos: Node ^16.14
 
